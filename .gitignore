@@ -1,0 +1,8 @@
+*.xcuserdatad
+.DS_Store
+/build
+/ipa
+
+*.swp
+*~
+*.bak
