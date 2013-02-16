@@ -7,6 +7,7 @@
 //
 
 #import "YTViewController.h"
+#import "YTImageModel.h"
 
 @interface YTViewController ()
 
@@ -18,6 +19,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [YTImageModel search:@"hoge"
+            onCompletion:^(NSArray *images) {
+                for (YTImageModel *image in images) {
+                    NSLog(@"%@", image.imageId);
+                }
+            } onError:^(MKNetworkOperation *completedOperation, NSError *error) {
+
+            }];
 }
 
 - (void)didReceiveMemoryWarning
