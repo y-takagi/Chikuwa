@@ -69,6 +69,12 @@
     return self;
 }
 
+- (NSURL *)originalUrl
+{
+    NSString *urlString = [NSString stringWithFormat:kOriginalFormat, self.imageId, self.ext];
+    return [NSURL URLWithString:urlString];
+}
+
 - (NSURL *)thumbnailUrl
 {
     NSString *urlString = [NSString stringWithFormat:kThumbnailFormat, self.imageId];

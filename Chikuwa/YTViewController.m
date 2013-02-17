@@ -82,6 +82,17 @@ static const CGFloat kItemWidth = kThumbnailWidth + kThumbnailMargin;
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    YTImageModel *image = self.images[indexPath.row];
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    [pasteboard setValue:image.originalUrl forPasteboardType:@"public.url"];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [hud setMode:MBProgressHUDModeText];
+    [hud setDetailsLabelText:@"選択した画像のURLをコピーしました。"];
+    [hud hide:YES afterDelay:1.5f];
+}
+
 #pragma mark - UICollectionViewWaterfallLayoutDelegate
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView

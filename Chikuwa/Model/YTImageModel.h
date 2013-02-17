@@ -17,8 +17,9 @@ static const CGFloat kThumbnailWidth = 142.f;
 @property (copy, nonatomic)     NSString *sourceUrl;
 @property (assign, nonatomic)   NSInteger height;
 @property (assign, nonatomic)   NSInteger width;
-@property (readonly, nonatomic) CGSize thumbnailSize;
+@property (readonly, nonatomic) NSURL *originalUrl;
 @property (readonly, nonatomic) NSURL *thumbnailUrl;
+@property (readonly, nonatomic) CGSize thumbnailSize;
 
 + (void)search:(NSString *)query
   onCompletion:(ImageListResponseBlock)completionBlock
