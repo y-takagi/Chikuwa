@@ -9,8 +9,7 @@
 #import "YTImageModel.h"
 #import "YTApiEngine.h"
 
-static NSString * const kProtocol = @"http";
-static NSString * const kImageHost = @"img.tiqav.com";
+#define kOriginalFormat @"http://img.tiqav.com/%@.%@"
 #define kThumbnailFormat @"http://img.tiqav.com/%@.th.jpg"
 
 static const CGFloat kImageWidth = 145.f;

@@ -11,8 +11,9 @@
 #import "YTCollectionViewCell.h"
 #import "UICollectionViewWaterfallLayout.h"
 
-@interface YTViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateWaterfallLayout>
+@interface YTViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateWaterfallLayout, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UISearchBar *imageSearchBar;
 @property (strong, nonatomic) NSArray *images;
 @end
 
@@ -62,7 +63,10 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     YTCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"YTCollectionViewCell" forIndexPath:indexPath];
-    [cell.imageView setImageWithURL:[[self.images objectAtIndex:indexPath.row] thumbnailUrl]
+
+    [cell.imageView setImageWithURL:[self.images[indexPath.row] thumbnailUrl]
+                   placeholderImage:nil
+                            options:SDWebImageCacheMemoryOnly
                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                           }];
     return cell;
@@ -75,6 +79,35 @@
  heightForItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	return ((YTImageModel *)self.images[indexPath.row]).customHeight;
+}
+
+#pragma mark - UISerarchBar methods
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [self.imageSearchBar resignFirstResponder];
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    [self.imageSearchBar setShowsCancelButton:YES animated:YES];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    [self.imageSearchBar resignFirstResponder];
+    [self.imageSearchBar setShowsCancelButton:NO animated:YES];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self.imageSearchBar resignFirstResponder];
+    [YTImageModel search:searchBar.text
+            onCompletion:^(NSArray *images) {
+                self.images = images;
+                [self.collectionView reloadData];
+            } onError:^(MKNetworkOperation *completedOperation, NSError *error) {
+            }];
 }
 
 @end
