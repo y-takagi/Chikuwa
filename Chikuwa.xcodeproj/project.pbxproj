@@ -76,6 +76,7 @@
 		71AFD19B16D0BEC6003D8933 /* UICollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UICollectionViewWaterfallLayout.m; path = "external-libs/UICollectionViewWaterfallLayout/UICollectionViewWaterfallLayout.m"; sourceTree = "<group>"; };
 		71AFD19F16D0CA39003D8933 /* YTCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTCollectionViewCell.h; sourceTree = "<group>"; };
 		71AFD1A016D0CA39003D8933 /* YTCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTCollectionViewCell.m; sourceTree = "<group>"; };
+		71AFD1A516D0D732003D8933 /* YTWeakType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTWeakType.h; sourceTree = "<group>"; };
 		71F8068416CFD1ED00B5EC10 /* Chikuwa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chikuwa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F8068716CFD1ED00B5EC10 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		71F8068916CFD1ED00B5EC10 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -223,6 +224,7 @@
 				71AFD1A016D0CA39003D8933 /* YTCollectionViewCell.m */,
 				71F806A216CFD1EE00B5EC10 /* YTViewController.h */,
 				71F806A316CFD1EE00B5EC10 /* YTViewController.m */,
+				71AFD1A516D0D732003D8933 /* YTWeakType.h */,
 			);
 			path = Chikuwa;
 			sourceTree = "<group>";

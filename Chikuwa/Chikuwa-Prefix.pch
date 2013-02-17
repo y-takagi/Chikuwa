@@ -13,4 +13,5 @@
     #import <Foundation/Foundation.h>
     #import "MKNetworkKit.h"
     #import "UIImageView+WebCache.h"
+    #import "YTWeakType.h"
 #endif

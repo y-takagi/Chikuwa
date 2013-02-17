@@ -25,15 +25,15 @@
     // Setup UICollectionViewWaterfallLayout
 	UICollectionViewWaterfallLayout *layout = (UICollectionViewWaterfallLayout *)self.collectionView.collectionViewLayout;
 	layout.columnCount = 2;
-	layout.itemWidth = self.view.bounds.size.width / 2;
+	layout.itemWidth = self.view.bounds.size.width / 2 - 15;
+    layout.sectionInset = UIEdgeInsetsMake(10.f, 10.f, 10.f, 10.f);
 	layout.delegate = self;
-    
-    [YTImageModel search:@"面倒"
-            onCompletion:^(NSArray *images) {
-                self.images = images;
-                [self.collectionView reloadData];
-            } onError:^(MKNetworkOperation *completedOperation, NSError *error) {                
-            }];
+
+    [YTImageModel newest:^(NSArray *images) {
+        self.images = images;
+        [self.collectionView reloadData];
+    } onError:^(MKNetworkOperation *completedOperation, NSError *error) {
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,7 +62,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     YTCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"YTCollectionViewCell" forIndexPath:indexPath];
-    [cell.imageView setImageWithURL:[[self.images objectAtIndex:indexPath.row] imageUrl]
+    [cell.imageView setImageWithURL:[[self.images objectAtIndex:indexPath.row] thumbnailUrl]
                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                           }];
     return cell;
@@ -74,7 +74,7 @@
                    layout:(UICollectionViewWaterfallLayout *)collectionViewLayout
  heightForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	return 100;
+	return ((YTImageModel *)self.images[indexPath.row]).customHeight;
 }
 
 @end
