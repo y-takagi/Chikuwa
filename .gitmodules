@@ -7,3 +7,6 @@
 [submodule "external-libs/UICollectionViewWaterfallLayout"]
 	path = external-libs/UICollectionViewWaterfallLayout
 	url = git://github.com/chiahsien/UICollectionViewWaterfallLayout.git
+[submodule "external-libs/MBProgressHUD"]
+	path = external-libs/MBProgressHUD
+	url = git://github.com/jdg/MBProgressHUD.git

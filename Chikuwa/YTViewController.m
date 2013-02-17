@@ -10,6 +10,7 @@
 #import "YTImageModel.h"
 #import "YTCollectionViewCell.h"
 #import "UICollectionViewWaterfallLayout.h"
+#import "MBProgressHUD.h"
 
 static const CGFloat kThumbnailMargin = 10.f;
 static const CGFloat kItemWidth = kThumbnailWidth + kThumbnailMargin;
@@ -33,7 +34,9 @@ static const CGFloat kItemWidth = kThumbnailWidth + kThumbnailMargin;
     layout.sectionInset = UIEdgeInsetsMake(6.f, 6.f, 6.f, 6.f);
 	layout.delegate = self;
 
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [YTImageModel newest:^(NSArray *images) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.images = images;
         [self.collectionView reloadData];
     } onError:^(MKNetworkOperation *completedOperation, NSError *error) {
@@ -109,9 +112,10 @@ static const CGFloat kItemWidth = kThumbnailWidth + kThumbnailMargin;
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [self.imageSearchBar resignFirstResponder];
-
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [YTImageModel search:searchBar.text
             onCompletion:^(NSArray *images) {
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
                 self.imageSearchBar.prompt = @"検索結果";
                 self.images = images;
                 [self.collectionView reloadData];
