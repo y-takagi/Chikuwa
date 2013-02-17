@@ -4,3 +4,6 @@
 [submodule "external-libs/SDWebImage"]
 	path = external-libs/SDWebImage
 	url = git://github.com/rs/SDWebImage.git
+[submodule "external-libs/UICollectionViewWaterfallLayout"]
+	path = external-libs/UICollectionViewWaterfallLayout
+	url = git://github.com/chiahsien/UICollectionViewWaterfallLayout.git
