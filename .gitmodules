@@ -1,3 +1,6 @@
 [submodule "external-libs/MKNetworkKit"]
 	path = external-libs/MKNetworkKit
 	url = git://github.com/MugunthKumar/MKNetworkKit.git
+[submodule "external-libs/SDWebImage"]
+	path = external-libs/SDWebImage
+	url = git://github.com/rs/SDWebImage.git
