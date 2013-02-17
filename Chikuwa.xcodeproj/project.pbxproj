@@ -21,6 +21,8 @@
 		71AFD19816D0B87A003D8933 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71AFD19716D0B87A003D8933 /* MapKit.framework */; };
 		71AFD19C16D0BEC6003D8933 /* UICollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AFD19B16D0BEC6003D8933 /* UICollectionViewWaterfallLayout.m */; };
 		71AFD1A116D0CA39003D8933 /* YTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AFD1A016D0CA39003D8933 /* YTCollectionViewCell.m */; };
+		71AFD1AB16D11B6A003D8933 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71AFD1AA16D11B6A003D8933 /* QuartzCore.framework */; };
+		71AFD1B716D134AF003D8933 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AFD1B616D134AF003D8933 /* placeholder.png */; };
 		71F8068816CFD1ED00B5EC10 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F8068716CFD1ED00B5EC10 /* UIKit.framework */; };
 		71F8068A16CFD1ED00B5EC10 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F8068916CFD1ED00B5EC10 /* Foundation.framework */; };
 		71F8068C16CFD1ED00B5EC10 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F8068B16CFD1ED00B5EC10 /* CoreGraphics.framework */; };
@@ -77,6 +79,8 @@
 		71AFD19F16D0CA39003D8933 /* YTCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTCollectionViewCell.h; sourceTree = "<group>"; };
 		71AFD1A016D0CA39003D8933 /* YTCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTCollectionViewCell.m; sourceTree = "<group>"; };
 		71AFD1A516D0D732003D8933 /* YTWeakType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTWeakType.h; sourceTree = "<group>"; };
+		71AFD1AA16D11B6A003D8933 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		71AFD1B616D134AF003D8933 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = Resource/placeholder.png; sourceTree = "<group>"; };
 		71F8068416CFD1ED00B5EC10 /* Chikuwa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chikuwa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F8068716CFD1ED00B5EC10 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		71F8068916CFD1ED00B5EC10 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -126,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71AFD1AB16D11B6A003D8933 /* QuartzCore.framework in Frameworks */,
 				71AFD19816D0B87A003D8933 /* MapKit.framework in Frameworks */,
 				71AFD19616D0B663003D8933 /* ImageIO.framework in Frameworks */,
 				71F806D016CFD3E700B5EC10 /* CFNetwork.framework in Frameworks */,
@@ -178,6 +183,14 @@
 			name = UICollectionViewWaterfallLayout;
 			sourceTree = "<group>";
 		};
+		71AFD1B316D1327A003D8933 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				71AFD1B616D134AF003D8933 /* placeholder.png */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
 		71F8067B16CFD1ED00B5EC10 = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +212,7 @@
 		71F8068616CFD1ED00B5EC10 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71AFD1AA16D11B6A003D8933 /* QuartzCore.framework */,
 				71AFD19716D0B87A003D8933 /* MapKit.framework */,
 				71AFD19516D0B663003D8933 /* ImageIO.framework */,
 				71F806CD16CFD3E700B5EC10 /* CFNetwork.framework */,
@@ -217,6 +231,7 @@
 				71F8069F16CFD1EE00B5EC10 /* MainStoryboard.storyboard */,
 				71F806D316CFD60500B5EC10 /* Model */,
 				71F806D416CFD60C00B5EC10 /* Network */,
+				71AFD1B316D1327A003D8933 /* Resource */,
 				71F8068E16CFD1ED00B5EC10 /* Supporting Files */,
 				71F8069616CFD1ED00B5EC10 /* YTAppDelegate.h */,
 				71F8069716CFD1ED00B5EC10 /* YTAppDelegate.m */,
@@ -371,6 +386,7 @@
 				71F8069C16CFD1EE00B5EC10 /* Default@2x.png in Resources */,
 				71F8069E16CFD1EE00B5EC10 /* Default-568h@2x.png in Resources */,
 				71F806A116CFD1EE00B5EC10 /* MainStoryboard.storyboard in Resources */,
+				71AFD1B716D134AF003D8933 /* placeholder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

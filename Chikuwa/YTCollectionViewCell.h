@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface YTCollectionViewCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @end

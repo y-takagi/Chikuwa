@@ -12,8 +12,6 @@
 #define kOriginalFormat @"http://img.tiqav.com/%@.%@"
 #define kThumbnailFormat @"http://img.tiqav.com/%@.th.jpg"
 
-static const CGFloat kImageWidth = 145.f;
-
 @implementation YTImageModel
 
 + (void)search:(NSString *)query
@@ -67,7 +65,6 @@ static const CGFloat kImageWidth = 145.f;
         self.height = [[json objectForKey:@"height"] intValue];
         self.width = [[json objectForKey:@"width"] intValue];
         self.sourceUrl = [json objectForKey:@"source_url"];
-        self.customHeight = self.height * kImageWidth/self.width;
     }
     return self;
 }
@@ -76,6 +73,11 @@ static const CGFloat kImageWidth = 145.f;
 {
     NSString *urlString = [NSString stringWithFormat:kThumbnailFormat, self.imageId];
     return [NSURL URLWithString:urlString];
+}
+
+- (CGSize)thumbnailSize
+{
+    return CGSizeMake(kThumbnailWidth, self.height * kThumbnailWidth/self.width);
 }
 
 @end

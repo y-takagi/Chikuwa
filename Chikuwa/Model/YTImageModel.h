@@ -8,14 +8,17 @@
 
 typedef void (^ImageListResponseBlock)(NSArray *images);
 
+static const CGFloat kThumbnailWidth = 142.f;
+
 @interface YTImageModel : NSObject
 
-@property (copy, nonatomic)   NSString *imageId;
-@property (copy, nonatomic)   NSString *ext;
-@property (copy, nonatomic)   NSString *sourceUrl;
-@property (assign, nonatomic) NSInteger height;
-@property (assign, nonatomic) NSInteger width;
-@property (assign, nonatomic) CGFloat customHeight;
+@property (copy, nonatomic)     NSString *imageId;
+@property (copy, nonatomic)     NSString *ext;
+@property (copy, nonatomic)     NSString *sourceUrl;
+@property (assign, nonatomic)   NSInteger height;
+@property (assign, nonatomic)   NSInteger width;
+@property (readonly, nonatomic) CGSize thumbnailSize;
+@property (readonly, nonatomic) NSURL *thumbnailUrl;
 
 + (void)search:(NSString *)query
   onCompletion:(ImageListResponseBlock)completionBlock
@@ -25,7 +28,5 @@ typedef void (^ImageListResponseBlock)(NSArray *images);
        onError:(MKNKResponseErrorBlock)errorBlock;
 
 - (id)initWithDictionary:(NSDictionary *)json;
-
-- (NSURL *)thumbnailUrl;
 
 @end

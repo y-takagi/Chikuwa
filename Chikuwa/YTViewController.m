@@ -11,6 +11,9 @@
 #import "YTCollectionViewCell.h"
 #import "UICollectionViewWaterfallLayout.h"
 
+static const CGFloat kThumbnailMargin = 10.f;
+static const CGFloat kItemWidth = kThumbnailWidth + kThumbnailMargin;
+
 @interface YTViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateWaterfallLayout, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UISearchBar *imageSearchBar;
@@ -26,8 +29,8 @@
     // Setup UICollectionViewWaterfallLayout
 	UICollectionViewWaterfallLayout *layout = (UICollectionViewWaterfallLayout *)self.collectionView.collectionViewLayout;
 	layout.columnCount = 2;
-	layout.itemWidth = self.view.bounds.size.width / 2 - 15;
-    layout.sectionInset = UIEdgeInsetsMake(10.f, 10.f, 10.f, 10.f);
+	layout.itemWidth = kItemWidth;
+    layout.sectionInset = UIEdgeInsetsMake(6.f, 6.f, 6.f, 6.f);
 	layout.delegate = self;
 
     [YTImageModel newest:^(NSArray *images) {
@@ -63,11 +66,15 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     YTCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"YTCollectionViewCell" forIndexPath:indexPath];
-
+    YTImageModel *image = self.images[indexPath.row];
+    cell.indicator.center = CGPointMake(kItemWidth/2, (image.thumbnailSize.height + kThumbnailMargin)/2);
+    [cell.indicator startAnimating];
+    DECLARE_WEAK(cell);
     [cell.imageView setImageWithURL:[self.images[indexPath.row] thumbnailUrl]
-                   placeholderImage:nil
+                   placeholderImage:[UIImage imageNamed:@"placeholder.png"]
                             options:SDWebImageCacheMemoryOnly
                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                              [w_cell.indicator stopAnimating];
                           }];
     return cell;
 }
@@ -78,7 +85,7 @@
                    layout:(UICollectionViewWaterfallLayout *)collectionViewLayout
  heightForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	return ((YTImageModel *)self.images[indexPath.row]).customHeight;
+	return ((YTImageModel *)self.images[indexPath.row]).thumbnailSize.height + kThumbnailMargin;
 }
 
 #pragma mark - UISerarchBar methods
@@ -102,10 +109,13 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [self.imageSearchBar resignFirstResponder];
+
     [YTImageModel search:searchBar.text
             onCompletion:^(NSArray *images) {
+                self.imageSearchBar.prompt = @"検索結果";
                 self.images = images;
                 [self.collectionView reloadData];
+                [self.collectionView setContentOffset:CGPointMake(0.f, 0.f) animated:NO];
             } onError:^(MKNetworkOperation *completedOperation, NSError *error) {
             }];
 }

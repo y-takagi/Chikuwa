@@ -13,28 +13,39 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" showsHorizontalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="wvY-gg-imG">
-                                <rect key="frame" x="0.0" y="44" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="75" width="320" height="385"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <collectionViewLayout key="collectionViewLayout" id="y47-nr-DoI" customClass="UICollectionViewWaterfallLayout"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="YTCollectionViewCell" id="mwK-yR-TmL" customClass="YTCollectionViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="145" height="145"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="152" height="152"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="145" height="145"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="152" height="152"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" id="bmZ-DN-wBE">
+                                                    <rect key="frame" x="5" y="5" width="142" height="142"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" id="IVW-9C-BpE">
-                                                    <rect key="frame" x="0.0" y="0.0" width="145" height="145"/>
+                                                    <rect key="frame" x="5" y="5" width="142" height="142"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" id="1An-kP-pt2">
+                                                    <rect key="frame" x="64" y="61" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <size key="customSize" width="145" height="145"/>
+                                        <size key="customSize" width="152" height="152"/>
                                         <connections>
                                             <outlet property="imageView" destination="IVW-9C-BpE" id="F3E-Qs-vRY"/>
+                                            <outlet property="indicator" destination="1An-kP-pt2" id="2Wz-VA-zje"/>
+                                            <outlet property="shadowView" destination="bmZ-DN-wBE" id="Iyv-PE-cL3"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -43,8 +54,8 @@
                                     <outlet property="delegate" destination="2" id="KNU-sO-kDr"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" barStyle="blackOpaque" id="yJi-CN-k9G">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <searchBar contentMode="redraw" barStyle="blackOpaque" prompt="新着" id="yJi-CN-k9G">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
@@ -84,6 +95,8 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/YTCollectionViewCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="indicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="shadowView" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="YTViewController" superclassName="UIViewController">
