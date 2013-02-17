@@ -15,4 +15,4 @@ $ git submodule update --init --recursive
 あとは`Chikuwa.xcodeproj`ファイルを開いてRunするだけです。
 
 ## Licenses
-All source code is licensed under the [New BSD License](https://raw.github.com/y-takagi/Chikuwa/master/LICENSE).
+Chikuwa is licensed under the terms of the [New BSD License](https://raw.github.com/y-takagi/Chikuwa/master/LICENSE).
