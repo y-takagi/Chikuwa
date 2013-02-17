@@ -19,6 +19,8 @@
 		71AFD19416D0B63B003D8933 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AFD18A16D0B63B003D8933 /* UIImageView+WebCache.m */; };
 		71AFD19616D0B663003D8933 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71AFD19516D0B663003D8933 /* ImageIO.framework */; };
 		71AFD19816D0B87A003D8933 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71AFD19716D0B87A003D8933 /* MapKit.framework */; };
+		71AFD19C16D0BEC6003D8933 /* UICollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AFD19B16D0BEC6003D8933 /* UICollectionViewWaterfallLayout.m */; };
+		71AFD1A116D0CA39003D8933 /* YTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AFD1A016D0CA39003D8933 /* YTCollectionViewCell.m */; };
 		71F8068816CFD1ED00B5EC10 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F8068716CFD1ED00B5EC10 /* UIKit.framework */; };
 		71F8068A16CFD1ED00B5EC10 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F8068916CFD1ED00B5EC10 /* Foundation.framework */; };
 		71F8068C16CFD1ED00B5EC10 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F8068B16CFD1ED00B5EC10 /* CoreGraphics.framework */; };
@@ -70,6 +72,10 @@
 		71AFD18A16D0B63B003D8933 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		71AFD19516D0B663003D8933 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		71AFD19716D0B87A003D8933 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		71AFD19A16D0BEC6003D8933 /* UICollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UICollectionViewWaterfallLayout.h; path = "external-libs/UICollectionViewWaterfallLayout/UICollectionViewWaterfallLayout.h"; sourceTree = "<group>"; };
+		71AFD19B16D0BEC6003D8933 /* UICollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UICollectionViewWaterfallLayout.m; path = "external-libs/UICollectionViewWaterfallLayout/UICollectionViewWaterfallLayout.m"; sourceTree = "<group>"; };
+		71AFD19F16D0CA39003D8933 /* YTCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTCollectionViewCell.h; sourceTree = "<group>"; };
+		71AFD1A016D0CA39003D8933 /* YTCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTCollectionViewCell.m; sourceTree = "<group>"; };
 		71F8068416CFD1ED00B5EC10 /* Chikuwa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chikuwa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F8068716CFD1ED00B5EC10 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		71F8068916CFD1ED00B5EC10 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -162,6 +168,15 @@
 			path = "external-libs/SDWebImage/SDWebImage";
 			sourceTree = "<group>";
 		};
+		71AFD19916D0BEA8003D8933 /* UICollectionViewWaterfallLayout */ = {
+			isa = PBXGroup;
+			children = (
+				71AFD19A16D0BEC6003D8933 /* UICollectionViewWaterfallLayout.h */,
+				71AFD19B16D0BEC6003D8933 /* UICollectionViewWaterfallLayout.m */,
+			);
+			name = UICollectionViewWaterfallLayout;
+			sourceTree = "<group>";
+		};
 		71F8067B16CFD1ED00B5EC10 = {
 			isa = PBXGroup;
 			children = (
@@ -198,14 +213,16 @@
 		71F8068D16CFD1ED00B5EC10 /* Chikuwa */ = {
 			isa = PBXGroup;
 			children = (
-				71F806D416CFD60C00B5EC10 /* Network */,
+				71F8069F16CFD1EE00B5EC10 /* MainStoryboard.storyboard */,
 				71F806D316CFD60500B5EC10 /* Model */,
+				71F806D416CFD60C00B5EC10 /* Network */,
+				71F8068E16CFD1ED00B5EC10 /* Supporting Files */,
 				71F8069616CFD1ED00B5EC10 /* YTAppDelegate.h */,
 				71F8069716CFD1ED00B5EC10 /* YTAppDelegate.m */,
-				71F8069F16CFD1EE00B5EC10 /* MainStoryboard.storyboard */,
+				71AFD19F16D0CA39003D8933 /* YTCollectionViewCell.h */,
+				71AFD1A016D0CA39003D8933 /* YTCollectionViewCell.m */,
 				71F806A216CFD1EE00B5EC10 /* YTViewController.h */,
 				71F806A316CFD1EE00B5EC10 /* YTViewController.m */,
-				71F8068E16CFD1ED00B5EC10 /* Supporting Files */,
 			);
 			path = Chikuwa;
 			sourceTree = "<group>";
@@ -227,6 +244,7 @@
 		71F806AA16CFD36300B5EC10 /* external-libs */ = {
 			isa = PBXGroup;
 			children = (
+				71AFD19916D0BEA8003D8933 /* UICollectionViewWaterfallLayout */,
 				71AFD17516D0B63B003D8933 /* SDWebImage */,
 				71F806AB16CFD3B400B5EC10 /* MKNetworkKit */,
 			);
@@ -385,6 +403,8 @@
 				71AFD19216D0B63B003D8933 /* SDWebImagePrefetcher.m in Sources */,
 				71AFD19316D0B63B003D8933 /* UIButton+WebCache.m in Sources */,
 				71AFD19416D0B63B003D8933 /* UIImageView+WebCache.m in Sources */,
+				71AFD19C16D0BEC6003D8933 /* UICollectionViewWaterfallLayout.m in Sources */,
+				71AFD1A116D0CA39003D8933 /* YTCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

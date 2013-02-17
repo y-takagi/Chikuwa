@@ -9,20 +9,11 @@
 #import "YTImageModel.h"
 #import "YTApiEngine.h"
 
-@implementation YTImageModel
+static NSString * const kProtocol = @"http";
+static NSString * const kImageHost = @"img.tiqav.com";
+#define kThumbnailFormat @"http://img.tiqav.com/%@.th.jpg"
 
-- (id)initWithDictionary:(NSDictionary *)json
-{
-    self = [super init];
-    if (self) {
-        self.imageId = [json objectForKey:@"id"];
-        self.ext = [json objectForKey:@"ext"];
-        self.height = [[json objectForKey:@"height"] intValue];
-        self.width = [[json objectForKey:@"width"] intValue];
-        self.sourceUrl = [json objectForKey:@"source_url"];
-    }
-    return self;
-}
+@implementation YTImageModel
 
 + (void)search:(NSString *)query
   onCompletion:(ImageListResponseBlock)completionBlock
@@ -47,6 +38,25 @@
                                    } onError:^(MKNetworkOperation *completedOperation, NSError *error) {
                                        errorBlock(completedOperation, error);
                                    }];
+}
+
+- (id)initWithDictionary:(NSDictionary *)json
+{
+    self = [super init];
+    if (self) {
+        self.imageId = [json objectForKey:@"id"];
+        self.ext = [json objectForKey:@"ext"];
+        self.height = [[json objectForKey:@"height"] intValue];
+        self.width = [[json objectForKey:@"width"] intValue];
+        self.sourceUrl = [json objectForKey:@"source_url"];
+    }
+    return self;
+}
+
+- (NSURL *)imageUrl
+{
+    NSString *urlString = [NSString stringWithFormat:kThumbnailFormat, self.imageId];
+    return [NSURL URLWithString:urlString];
 }
 
 @end
