@@ -24,6 +24,7 @@
 		71AFD1AB16D11B6A003D8933 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71AFD1AA16D11B6A003D8933 /* QuartzCore.framework */; };
 		71AFD1B716D134AF003D8933 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 71AFD1B616D134AF003D8933 /* placeholder.png */; };
 		71AFD1BB16D14C1B003D8933 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 71AFD1BA16D14C1B003D8933 /* MBProgressHUD.m */; };
+		71AFD1BF16D15560003D8933 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71AFD1BE16D1555F003D8933 /* Settings.bundle */; };
 		71F8068816CFD1ED00B5EC10 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F8068716CFD1ED00B5EC10 /* UIKit.framework */; };
 		71F8068A16CFD1ED00B5EC10 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F8068916CFD1ED00B5EC10 /* Foundation.framework */; };
 		71F8068C16CFD1ED00B5EC10 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F8068B16CFD1ED00B5EC10 /* CoreGraphics.framework */; };
@@ -84,6 +85,7 @@
 		71AFD1B616D134AF003D8933 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = Resource/placeholder.png; sourceTree = "<group>"; };
 		71AFD1B916D14C1B003D8933 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = "external-libs/MBProgressHUD/MBProgressHUD.h"; sourceTree = "<group>"; };
 		71AFD1BA16D14C1B003D8933 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = "external-libs/MBProgressHUD/MBProgressHUD.m"; sourceTree = "<group>"; };
+		71AFD1BE16D1555F003D8933 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		71F8068416CFD1ED00B5EC10 /* Chikuwa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chikuwa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F8068716CFD1ED00B5EC10 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		71F8068916CFD1ED00B5EC10 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -244,6 +246,7 @@
 				71F806D316CFD60500B5EC10 /* Model */,
 				71F806D416CFD60C00B5EC10 /* Network */,
 				71AFD1B316D1327A003D8933 /* Resource */,
+				71AFD1BE16D1555F003D8933 /* Settings.bundle */,
 				71F8068E16CFD1ED00B5EC10 /* Supporting Files */,
 				71F8069616CFD1ED00B5EC10 /* YTAppDelegate.h */,
 				71F8069716CFD1ED00B5EC10 /* YTAppDelegate.m */,
@@ -400,6 +403,7 @@
 				71F8069E16CFD1EE00B5EC10 /* Default-568h@2x.png in Resources */,
 				71F806A116CFD1EE00B5EC10 /* MainStoryboard.storyboard in Resources */,
 				71AFD1B716D134AF003D8933 /* placeholder.png in Resources */,
+				71AFD1BF16D15560003D8933 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

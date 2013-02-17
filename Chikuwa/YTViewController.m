@@ -90,7 +90,7 @@ static const CGFloat kItemWidth = kThumbnailWidth + kThumbnailMargin;
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [hud setMode:MBProgressHUDModeText];
     [hud setDetailsLabelText:@"選択した画像のURLをコピーしました。"];
-    [hud hide:YES afterDelay:1.5f];
+    [hud hide:YES afterDelay:1.f];
 }
 
 #pragma mark - UICollectionViewWaterfallLayoutDelegate
