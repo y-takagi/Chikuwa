@@ -19,7 +19,6 @@ static const CGFloat kItemWidth = kThumbnailWidth + kThumbnailMargin;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UISearchBar *imageSearchBar;
 @property (strong, nonatomic) NSArray *images;
-@property (strong, nonatomic) NSMutableDictionary *cacheImage;
 @end
 
 @implementation YTViewController
@@ -41,6 +40,7 @@ static const CGFloat kItemWidth = kThumbnailWidth + kThumbnailMargin;
         self.images = images;
         [self.collectionView reloadData];
     } onError:^(MKNetworkOperation *completedOperation, NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 
@@ -60,14 +60,6 @@ static const CGFloat kItemWidth = kThumbnailWidth + kThumbnailMargin;
     return _images;
 }
 
-- (NSMutableDictionary *)cacheImage
-{
-    if (!_cacheImage) {
-        _cacheImage = [NSMutableDictionary dictionary];
-    }
-    return _cacheImage;
-}
-
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -80,21 +72,16 @@ static const CGFloat kItemWidth = kThumbnailWidth + kThumbnailMargin;
     YTCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"YTCollectionViewCell" forIndexPath:indexPath];
     YTImageModel *imageModel = self.images[indexPath.row];
 
-    if ([self.cacheImage objectForKey:imageModel.imageId]) {
-        [cell.imageView setImage:[self.cacheImage objectForKey:imageModel.imageId]];
-    } else {
-        cell.indicator.center = CGPointMake(kItemWidth/2, (imageModel.thumbnailSize.height + kThumbnailMargin)/2);
-        [cell.indicator startAnimating];
-        DECLARE_WEAK(cell);
-        [cell.imageView setImageWithURL:[self.images[indexPath.row] thumbnailUrl]
-                       placeholderImage:[UIImage imageNamed:@"placeholder.png"]
-                                options:SDWebImageCacheMemoryOnly
-                              completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                                  [w_cell.indicator stopAnimating];
-                                  [self.cacheImage setObject:image forKey:imageModel.imageId];
-                              }
-         ];
-    }
+    cell.indicator.center = CGPointMake(kItemWidth/2, (imageModel.thumbnailSize.height + kThumbnailMargin)/2);
+    [cell.indicator startAnimating];
+    DECLARE_WEAK(cell);
+    [cell.imageView setImageWithURL:[self.images[indexPath.row] thumbnailUrl]
+                   placeholderImage:[UIImage imageNamed:@"placeholder.png"]
+                            options:SDWebImageCacheMemoryOnly
+                          completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                              [w_cell.indicator stopAnimating];
+                          }
+     ];
     return cell;
 }
 
@@ -139,7 +126,6 @@ static const CGFloat kItemWidth = kThumbnailWidth + kThumbnailMargin;
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [self.imageSearchBar resignFirstResponder];
-    [self.cacheImage removeAllObjects];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [YTImageModel search:searchBar.text
             onCompletion:^(NSArray *images) {
@@ -149,6 +135,7 @@ static const CGFloat kItemWidth = kThumbnailWidth + kThumbnailMargin;
                 [self.collectionView reloadData];
                 [self.collectionView setContentOffset:CGPointMake(0.f, 0.f) animated:NO];
             } onError:^(MKNetworkOperation *completedOperation, NSError *error) {
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
             }];
 }
 
