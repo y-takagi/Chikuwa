@@ -88,12 +88,24 @@ static const CGFloat kItemWidth = kThumbnailWidth + kThumbnailMargin;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     YTImageModel *image = self.images[indexPath.row];
-    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    [pasteboard setValue:image.originalUrl forPasteboardType:@"public.url"];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [hud setMode:MBProgressHUDModeText];
-    [hud setDetailsLabelText:@"選択した画像のURLをコピーしました。"];
-    [hud hide:YES afterDelay:1.f];
+    NSArray *activityItems = @[image.originalUrl];
+    NSArray *excludeActivities = @[UIActivityTypeMail, UIActivityTypeMessage, UIActivityTypePostToWeibo];
+    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems
+                                                                                     applicationActivities:nil];
+    activityController.excludedActivityTypes = excludeActivities;
+    [activityController setCompletionHandler:^(NSString *activityType, BOOL completed) {
+        if (!activityType) return;
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [hud setMode:MBProgressHUDModeText];
+        if ([activityType isEqualToString:UIActivityTypeCopyToPasteboard]) {
+            [hud setDetailsLabelText:@"コピーしました。"];
+        } else {
+            [hud setDetailsLabelText:completed ? @"共有しました。" : @"共有に失敗しました。"];
+        }
+        [hud hide:YES afterDelay:1.f];
+    }];
+
+    [self presentViewController:activityController animated:YES completion:nil];
 }
 
 #pragma mark - UICollectionViewWaterfallLayoutDelegate

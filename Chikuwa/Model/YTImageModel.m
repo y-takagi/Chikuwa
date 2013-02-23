@@ -9,8 +9,8 @@
 #import "YTImageModel.h"
 #import "YTApiEngine.h"
 
-#define kOriginalFormat @"http://img.tiqav.com/%@.%@"
-#define kThumbnailFormat @"http://img.tiqav.com/%@.th.jpg"
+#define kOriginalFormat @"http://tiqav.com/%@.%@"
+#define kThumbnailFormat @"http://tiqav.com/%@.th.jpg"
 
 @implementation YTImageModel
 
